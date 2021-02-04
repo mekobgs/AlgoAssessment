@@ -26,7 +26,12 @@ namespace TGS.Challenge
     {
         public string Format(int value)
         {
-            return string.Empty;
+            if (value < 0 || value > 1000000000)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            var stringValue = String.Format(value % 1 == 0 ? "{0:N0}" : "{0:N2}", value);
+            return stringValue;
         }
     }
 }
